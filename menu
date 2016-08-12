@@ -1,0 +1,90 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+
+int digitos(int a);
+int sumadigitos(int a);
+
+void main()
+{ 
+		int a ,b,c,opcion;
+		do{
+			cout<<"ingrese 1 para ver cuanto digitos tiene:"<<endl;
+			cout<<"ingrese 2 para la suma de sus digitos:"<<endl;
+			cout<<"ingrese 0 para salir:"<<endl;
+			cout<<"opcion:"<<endl;
+			cin>>opcion;
+
+		switch(opcion)
+			{
+			case 1:	do
+					{
+					cout<<"introduzca un numero natural:";
+					cin>>a;
+					if(a<1)
+					{	
+					cout<<"error:"<<endl;
+		
+					}
+					}while(a<1);
+		
+					b=digitos(a);
+					cout<<"los digitos son:"<<b<<endl;
+					break;
+			case 2:	do
+					{
+					cout<<"introduzca un numero natural:";
+					cin>>a;
+					if(a<1)
+					{	
+					cout<<"error:"<<endl;
+		
+					}
+					}while(a<1);
+					c=sumadigitos(a);
+					cout<<"la suma de los digitos son:"<<c<<endl;
+					break;
+			case 0: cout<<"se termino el programa:"<<endl;
+					break;
+
+			default:cout<<"ingrese una opcion correcta:"<<endl;
+					break;
+
+			}
+			}while(opcion=!0);
+
+	getch();
+}
+
+
+int digitos(int a)
+{	int i=0;
+
+	while(a>0)
+		{
+			a=a/10;
+			i++;
+	
+		}
+
+	return i;
+
+
+}
+int sumadigitos(int a)
+{
+	int h,j=0;
+	
+	while(a>0)
+		{
+			h=a%10;
+			
+			j=j+a;
+			a=a/10;
+		}
+
+	return j;
+
+
+}
