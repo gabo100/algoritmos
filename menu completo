@@ -1,0 +1,238 @@
+#include<conio.h>
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+
+bool verfSiEsPrimo(int n)
+{
+	int i;
+	bool k=true;
+	for(i=2;i<=n-1;i++)
+	{
+		if(n%i==0)
+		{
+			k=false;
+		}
+	}
+
+	return k;
+}
+
+int sumarDigitoPrimos(int n)
+{
+	int s=0,d;
+	while(n>0)
+	{
+		d=n%10;
+		if(verfSiEsPrimo(d)==true)
+		{
+			s=s+d;
+		}
+		n=n/10;
+	}
+	return s;
+}
+
+
+int invertir(int n){
+	int  x=0, r;
+	while(n>0){
+	r=n%10;
+	x=x*10+r;
+	n=n/10;
+	}
+
+	return(x);
+}
+
+int eliminarDigitoPrimos(int n)
+{
+	int s=0,d;
+	while(n>0)
+	{
+		d=n%10;
+		if(verfSiEsPrimo(d)==false)
+		{
+			
+			s=(s*10)+d;
+			
+		}
+		n=n/10;
+		
+	}
+	return	invertir(s) ;
+}
+
+
+int concatenar(int a, int b)
+{
+	int c=0;
+        float r;
+        do{
+             c++;
+             r=b/(pow(10.0,c));
+        }while(r>=1);
+        int cat=a*powf(10,c)+b;
+
+		return cat;
+}
+
+
+
+
+int ascendente(int n){
+	int r1,r2,s=0;
+
+	n=invertir(n);
+
+	r1=n%10; 
+	
+	n=n/10;
+
+	while(n>0){
+	r2=n%10;
+	if(r1<r2){
+	s=r1+r2;
+
+	r1=r2;
+
+	n=n/10;
+
+	}
+	else{
+		n=n/10;}
+	
+	}
+
+	return(s+1);
+}
+
+
+bool verSiEsascendente(int n)
+{
+	int i;
+	bool k=true;
+
+	if(ascendent(n)==false)
+	{
+		k=false;
+	}
+
+	return k;
+
+}
+
+
+
+
+
+
+int digitos(int n){
+	int c=0;
+	
+
+	while(n>0){
+	n=n/10;
+	
+	c++;
+	}
+	return c;
+}
+
+int sumar(int n){
+int r ,s=0;
+while(n>0){
+	r=n%10;
+	s=s+r;
+	n=n/10;
+}
+return s;
+
+}
+
+
+
+
+void main(){
+
+	system ("color 1F");
+int n,r,x,op,s,d,a,b;
+do{cout<<"   M E N U \n ";
+cout<<"   _ _ _ _  \n";
+cout<<" 1.- contar digitos    \n";
+cout<<" 2.- sumar digitos    \n";
+cout<<" 3.- sumar digitos ascendente    \n";
+cout<<" 4.- invertir el numero"<<endl;
+cout<<" 5 .-sumar los digitos primos:"<<endl;
+cout<<" 6 .-eliminar los digitos primos:"<<endl;
+cout<<" 7.- concatenar 2 numeros:"<<endl;
+cout<<" 8 .- verificar si es ascendente:"<<endl;
+cout<<" 0 para salir:"<<endl;
+cin>>op;
+switch(op){
+case 1:cout<<"introduzca un numero natural";
+	   cin>>n;
+	   r=digitos(n);
+	   cout<<"la suma de sus digitos es "<<r;
+		break;
+case 2: cout<<"introduzca un numero natural";
+        cin>>n;
+		x=sumar(n);
+		cout<<"la suma de sus digitos es "<<x;
+		break;
+case 3: cout<<"digite un numero natural \n"; 
+		cin>> n;
+		s=ascendente(n);
+		cout<<"la suma de sus digitos  ascendente es \n"<<s;
+		break;
+
+case 4: cout<<"Ingrese un numero natural:";
+		cin>>n;
+		d=invertir(n);
+		cout<<"El numero invertido es:"<<d<<endl;
+		break;
+
+case 5:	cout<<"Ingrese un numero natural:";
+		cin>>n;
+		d=sumarDigitoPrimos(n);
+		cout<<"La suma es:"<<d<<endl;
+		break;
+
+case 6:	cout<<"Ingrese un numero natural:";
+		cin>>n;
+		d=eliminarDigitoPrimos(n);
+		cout<<"El numero final es:"<<d<<endl;
+		break;
+
+case 7: cout<<"Ingrese el primer numero: ";
+        cin>>a;
+        cout<<"Ingrese el segundo numero: ";
+        cin>>b;
+       d= concatenar(a,b);
+        cout<<"Concatenado: "<<d<<endl;
+		break;
+
+case 8:	cout<<"Ingrese un numero natural:";
+		cin>>n;
+	    d= verSiEsascendente(n);
+        cout<<"Concatenado: "<<d<<endl;
+		break;
+
+case 0:	cout<<" Se termino el programa:"<<endl;
+		break;
+
+default: cout<<" digite opcion correcta \n";
+
+
+}
+}while(op!=0);
+
+
+system("cls");
+
+
+
+getch();
+}
+
